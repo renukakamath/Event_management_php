@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Month Validation</title>
+</head>
+<body>
+
+<h2>Select Expiry Month:</h2>
+
+<form>
+    <label for="expiryMonth">Expiry Month:</label>
+    <input type="month" id="expiryMonth" name="expiryMonth" min="2023-08" required>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    const expiryMonthInput = document.getElementById('expiryMonth');
+    const currentMonth = new Date().toISOString().slice(0, 7); // Get current month in YYYY-MM format
+
+    expiryMonthInput.addEventListener('input', function() {
+        if (expiryMonthInput.value < currentMonth) {
+            expiryMonthInput.setCustomValidity('Expiry month cannot be in the past.');
+        } else {
+            expiryMonthInput.setCustomValidity('');
+        }
+    });
+</script>
+
+</body>
+</html>
